@@ -1,0 +1,155 @@
+
+
+
+/*Every extension requires a JSON-formatted file, named manifest.json, that provides important 
+information. This file must be located in the extension's root directory.
+*/
+
+/* # Field summary
+The following code shows the supported manifest keys. 
+For additional usage information and code samples, visit the link of each key.
+*/
+
+
+{
+    // Required
+    "manifest_version": 3,
+    "name": "My Extension",
+    "version": "1.0.1",
+  
+    // Recommended
+    "action": {...},
+    "default_locale": "en",
+    "description": "A plain text description",
+    "icons": {...},
+  
+    // Optional
+    "author": "developer@example.com",  
+    "automation": {...},
+    "background": {...},
+    "chrome_settings_overrides": {...},
+    "chrome_url_overrides": {...},
+    "commands": {...},
+    "content_scripts": [{...}],
+    "content_security_policy": {...},
+    "cross_origin_embedder_policy": {...},
+    "cross_origin_opener_policy": {...},
+    "declarative_net_request": {...},
+    "devtools_page": "devtools.html",
+    "event_rules": [{...}],
+    "export": {...},
+    "externally_connectable": {...},
+    "file_browser_handlers": [...],
+    "file_system_provider_capabilities": {...},
+    "homepage_url": "https://path/to/homepage",
+    "host_permissions": [...],
+    "import": [{...}],
+    "incognito": "spanning, split, or not_allowed",
+    "input_components": [{...}],
+    "key": "publicKey",
+    "minimum_chrome_version": "107",
+    "oauth2": {...},
+    "omnibox": {...},
+    "optional_host_permissions": ["..."],
+    "optional_permissions": ["..."],
+    "options_page": "options.html",
+    "options_ui": {...},
+    "permissions": ["..."],
+    "requirements": {...},
+    "sandbox": {...},
+    "short_name": "Short Name",
+    "storage": {...},
+    "tts_engine": {...},
+    "update_url": "https://path/to/updateInfo.xml",
+    "version_name": "1.0 beta",
+    "web_accessible_resources": [...]
+  }
+
+// *Manifest examples*
+
+// ****Reading time****
+{
+    "manifest_version": 3,
+    "name": "Reading Time",
+    "description": "Add the reading time to Chrome Extension documentation articles",
+    "version": "1.0",
+    "icons": {
+      "16": "images/icon-16.png",
+      "32": "images/icon-32.png",
+      "48": "images/icon-48.png",
+      "128": "images/icon-128.png"
+    },
+    "content_scripts": [
+      {
+        "js": [
+          "scripts/content.js"
+        ],
+        "matches": [
+          "https://developer.chrome.com/docs/extensions/*",
+          "https://developer.chrome.com/docs/webstore/*"
+        ]
+      }
+    ]
+  }
+
+  // *****Focus Mode******
+
+
+
+  {
+    "manifest_version": 3,
+    "name": "Focus Mode",
+    "description": "Enable reading mode on Chrome's official Extensions and Chrome Web Store documentation.",
+    "version": "1.0",
+    "icons": {
+      "16": "images/icon-16.png",
+      "32": "images/icon-32.png",
+      "48": "images/icon-48.png",
+      "128": "images/icon-128.png"
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_icon": {
+        "16": "images/icon-16.png",
+        "32": "images/icon-32.png",
+        "48": "images/icon-48.png",
+        "128": "images/icon-128.png"
+      }
+    },
+    "permissions": ["scripting", "activeTab"],
+    "commands": {
+      "_execute_action": {
+        "suggested_key": {
+          "default": "Ctrl+U",
+          "mac": "Command+U"
+        }
+      }
+    }
+  }
+
+
+  // **Tabs Manager
+
+  {
+    "manifest_version": 3,
+    "name": "Tab Manager for Chrome Extension Docs",
+    "description": "Organizes your Chrome extension and Chrome Web store documentation tabs.",
+    "version": "1.0",
+    "icons": {
+      "16": "images/icon-16.png",
+      "32": "images/icon-32.png",
+      "48": "images/icon-48.png",
+      "128": "images/icon-128.png"
+    },
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "host_permissions": [
+      "https://developer.chrome.com/*"
+    ],
+    "permissions": [
+      "tabGroups"
+    ]
+  }
